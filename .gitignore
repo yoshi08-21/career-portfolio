@@ -1,0 +1,7 @@
+# 機密・個人情報・未公開の下書きを Git 管理対象外にする
+*.local.md
+private/
+docs/private/
+
+# OS
+.DS_Store
