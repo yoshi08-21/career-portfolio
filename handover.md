@@ -1,30 +1,19 @@
 # 引き継ぎ資料（career-portfolio セッション）
 
-> 最終更新: 2026-06-21
+> 最終更新: 2026-06-22
 > 次セッションは **`~/Applications/development/`（横断ルート）で開く**。このファイルを `@career-portfolio/handover.md` でメンションすれば現状を把握できる。
 > 併せて読む: `@career-portfolio/CLAUDE.md`（方針）→ `@career-portfolio/README.md`（構成）→ `@career-portfolio/START-HERE.md`（開始ルール）。
 
 ---
 
-## 0. 🔴 最初にやること（未コミットの確定）
+## 0. ✅ 直近の確定状況（コミット済み・同期済み）
 
-このセッションの **ディレクトリ移動・再配置・ドキュメント一般化が未コミット**で working tree に残っている。新セッションで最初に確定すること。
+前セッションで working tree に残っていた **ディレクトリ移動・再配置・ドキュメント一般化の差分は確定済み**。新セッション開始時に追加対応は不要。
 
-- **基準点（push 済み・リモート同期）**: `dcee535 c`
-- **未コミットの差分**（`career-portfolio/` 内、`git status -s`）:
-  - `M CLAUDE.md README.md START-HERE.md appeals/README.md sources/README.md`
-  - `D appeals/2026-06-{ai-goal-management,delete-order-batch,order-csv-refactor}.md`（→ `appeals/supernova/` へ移動。**コミット時に rename 検出**）
-  - `?? appeals/supernova/ sources/supernova/`（新規）
-  - `?? handover.md`（このファイル）
-- 推奨コミット:
-  ```
-  git add -A
-  git commit -m "career-portfolio を横断ルートへ移動し、会社単位構成・入力ソース柔軟化に一般化"
-  git push        # ※ push は本人確認の上で
-  ```
-- ⚠️ **git 運用ルール（厳守）**: `git add`/`commit`/`push` は**本人の明示指示があるまで実行しない**。指示で commit した場合も **push 前に必ず確認**。
-
-> 補足: 「ディレクトリの物理移動」自体は git の差分には出ない（リポジトリが新しい場所に在るだけ）。git に出るのは上記の**内部再配置（rename）＋ドキュメント編集**のみ。
+- **現在の HEAD（push 済み・リモート同期）**: `cd74b8a career-portfolio を横断ルートへ移動し、会社単位構成・入力ソース柔軟化に一般化`
+- `git status` = クリーン、`main...origin/main`（ahead/behind なし）で **push 完了済み**。
+- これで確定した内容: 会社単位ディレクトリへの再配置（`appeals/supernova/`・`sources/supernova/`）、ドキュメント一般化（`CLAUDE.md` ほか）、`handover.md` の追加。
+- ⚠️ **git 運用ルール（今後も厳守）**: `git add`/`commit`/`push` は**本人の明示指示があるまで実行しない**。指示で commit した場合も **push 前に必ず確認**。
 
 ---
 
@@ -89,10 +78,10 @@
 
 ## 5. これからやること
 
-### A. 未コミット差分の確定（最優先）
-§0 の通り。本人の指示でコミット → 確認の上 push。
+### A. 未コミット差分の確定 ✅ 完了
+§0 の通り、`cd74b8a` でコミット・push 済み（2026-06-22 確認）。対応不要。
 
-### B. 別プロジェクトを `development/` へ移動（本人の次タスク）
+### B. 別プロジェクトを `development/` へ移動（本人の次タスク・最優先）
 career-portfolio の移動と同じ要領で安全に行う。career-portfolio 側は**変更不要**（別プロジェクトが兄弟に並べば、そのままメンションして整理を依頼できる）。
 
 移動手順の指針（career-portfolio 移動時に実証済み）:
