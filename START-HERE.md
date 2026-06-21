@@ -1,52 +1,47 @@
-# セッションの始め方（アピール文を作るとき）
+# セッションの始め方（レジュメ用アピールを作るとき）
 
-別セッションでアピール文を作るときの**開始ルール**。この通りに始めれば、毎回同じ品質で `career-portfolio/appeals/` に下書きが出来上がる。
+別セッションでアピール文・レジュメ素材を作るときの**開始ルール**。この通りに始めれば、毎回同じ品質で `career-portfolio/appeals/<会社>/` に下書きが出来上がる。
 
 > **AIに渡すのは `CLAUDE.md`。START-HERE はあなた用のカンペ**（手順とコピペ用キックオフ文の置き場）。このファイル自体をメンションする必要はない。
 
-## 前提：作業ルートは `supernova` か `supernova-biz`
+## 前提：career-portfolio は「横断ルート」に置く
 
-3つのリポジトリは `supernova-biz/` 直下に並んでいる（兄弟ディレクトリ）。
+複数プロジェクト（在籍企業）の親ディレクトリに career-portfolio を置く。横断ルートでセッションを開けば、career-portfolio と各プロジェクトを短い相対パスでメンションできる。
 
+```text
+~/Applications/development/            ← ここでセッションを開くのが推奨
+├── career-portfolio/                  ← このリポジトリ（appeals/<会社>/ に保存）
+├── supernova/ …                       ← 対象プロジェクト（兄弟）
+└── <other-projects>/                  ← 他プロジェクトも兄弟に並ぶ
 ```
-supernova/                         ← ここで開くこともある
-└── supernova-biz/                 ← 通常はここで開く（推奨）
-    ├── career-portfolio/          ← アピール文の置き場（このリポジトリ）
-    ├── sn-personal-notes/         ← タスク資料（例: tasks/stella-8272/）
-    └── task-management/           ← 目標管理
-```
 
-**career-portfolio の中では作業しない**ため、`career-portfolio/CLAUDE.md` は自動では読み込まれない。→ **毎回、方針ファイルを明示的にメンションする**こと（下記ステップA）。
-
-> 推奨は **`supernova-biz` で開く**こと。3リポジトリへの相対パスが短くなる。`supernova` で開く場合は各パスの先頭に `supernova-biz/` を足す。
+**career-portfolio の中では作業しない**ことが多いため、`career-portfolio/CLAUDE.md` は自動では読み込まれない。→ **毎回、方針ファイルを明示的にメンションする**こと（下記ステップA）。
 
 ## 1行でいうと
 
-作業ルートで、**`@career-portfolio/CLAUDE.md`** と**①対象タスクの資料**・**②自分のメモ**を渡して「アピール文を作って」と頼む。
+横断ルートで、**`@career-portfolio/CLAUDE.md`** と**①対象プロジェクトの入力**・**②自分のメモ**を渡して「このプロジェクトのアピールを作って」と頼む。
 
 ---
 
 ## ステップ
 
 ### A. 最初に方針を読ませる ＝【必須・自動ロードに頼らない】
-- 通常は `supernova-biz` / `supernova` で作業するので、career-portfolio の `CLAUDE.md` は自動で効かない。
-- だから**最初に必ず** `@career-portfolio/CLAUDE.md` をメンションする（任意で `@career-portfolio/START-HERE.md` も）。
-  - `supernova` で開いた場合: `@supernova-biz/career-portfolio/CLAUDE.md`
+- **最初に必ず** `@career-portfolio/CLAUDE.md` をメンションする。
 
-### B. 何をメンション（@）するか ＝【必須2つ】
-パスは**作業ルートからの相対**。
+### B. 何を入力に渡すか ＝【必須・柔軟でよい】
+プロジェクトごとに資料の整い方が違う。**基本はファイルメンション**、無ければ他の手段で素材化する（詳細は `CLAUDE.md`「入力ソースの取り方（柔軟）」）。
 
-| | `supernova-biz` で開いた場合 | `supernova` で開いた場合 |
-|---|---|---|
-| ① 対象タスクの資料 | `@sn-personal-notes/tasks/<...>/` | `@supernova-biz/sn-personal-notes/tasks/<...>/` |
-| ② 自分のメモ | `@career-portfolio/sources/<file>.md` | `@supernova-biz/career-portfolio/sources/<file>.md` |
+| 入力の取り方 | 例 |
+|---|---|
+| ① ファイルメンション（基本） | `@supernova/supernova-biz/sn-personal-notes/tasks/<...>/`、PR/チケットのリンク |
+| ① git 履歴から棚卸し | 「`@<対象リポジトリ>` の `feature/xxx` のコミット/PR から、私の担当範囲と判断を拾って」 |
+| ① 将来：Slack | （接続後）「このスレッドのやりとりを素材にして」 |
+| ② 自分のメモ | チャットに箇条書きを貼る／`@career-portfolio/sources/<会社>/<file>.md` |
 
-- ①はPR / チケットのリンクでも可。
-- ②はチャットに直接貼ってもよい。
-
-> この2つ（＋A）さえあれば着手できる。足りない項目はAIがプレースホルダーで補い、「ここに実数を」と明示する。
+> ①（何らかの事実の裏付け）＋②（メモ）さえあれば着手できる。足りない項目はAIがプレースホルダーで補い、「ここに実数を」と明示する。
 
 ### C. 何を別途共有するか ＝【あると精度が上がる】
+- 対象プロジェクト／在籍企業（保存先 `appeals/<会社>/` の決定に使う）
 - 用途（職務経歴書 / ポートフォリオ / 面接の口頭用）
 - 応募職種・方向性（技術寄り / 業務貢献寄り / マネジメント）
 - 定量成果（before→after の数値）※AIは数字を創作しないので、ここだけは実データ
@@ -56,21 +51,22 @@ supernova/                         ← ここで開くこともある
 → `career-portfolio/templates/request-template.md` を埋めて貼るのが速い。
 
 ### D. 何をお願いするか ＝【依頼文】
-> このタスクのアピール文を作って。`CLAUDE.md` の方針に沿って、**`career-portfolio/appeals/`** に `YYYY-MM-<テーマ>.md` で保存して。
+> このプロジェクトのアピールを作って。`CLAUDE.md` の方針に沿って、**`career-portfolio/appeals/<会社>/`** に `YYYY-MM-<テーマ>.md` で保存して。
 
 ---
 
 ## コピペ用キックオフ
 
-### ▼ `supernova-biz` で作業する場合（推奨）
+### ▼ ファイルメンションがある場合（基本）
 
 ```
 @career-portfolio/CLAUDE.md
-@sn-personal-notes/tasks/<タスク>/      ← または PR/チケットのリンク
+@<対象プロジェクトの資料パス>/      ← 例: @supernova/supernova-biz/sn-personal-notes/tasks/<タスク>/。PR/チケットのリンクでも可
 
-このタスクのアピール文を作ってください。CLAUDE.md の方針に沿って、career-portfolio/appeals/ に YYYY-MM-<テーマ>.md で保存してください。
+このプロジェクトのアピールを作ってください。CLAUDE.md の方針に沿って、career-portfolio/appeals/<会社>/ に YYYY-MM-<テーマ>.md で保存してください。
 
-- 私のメモ: <箇条書きを貼る、または @career-portfolio/sources/<file>.md>
+- 私のメモ: <箇条書きを貼る、または @career-portfolio/sources/<会社>/<file>.md>
+- 在籍企業/プロジェクト: <例: supernova>
 - 用途: 職務経歴書 / ポートフォリオ / 面接口頭（どれか）
 - 応募職種: <例: バックエンドエンジニア>
 - 定量成果: <数字。無ければ「後で記入」>
@@ -78,22 +74,25 @@ supernova/                         ← ここで開くこともある
 - 特に推したい点: <あれば>
 ```
 
-### ▼ `supernova` で作業する場合（パス先頭に `supernova-biz/` を付ける）
+### ▼ 整理資料が無い場合（git 履歴などから棚卸し）
 
 ```
-@supernova-biz/career-portfolio/CLAUDE.md
-@supernova-biz/sn-personal-notes/tasks/<タスク>/
+@career-portfolio/CLAUDE.md
 
-このタスクのアピール文を作ってください。CLAUDE.md の方針に沿って、supernova-biz/career-portfolio/appeals/ に YYYY-MM-<テーマ>.md で保存してください。
-（以下、項目は上と同じ）
+@<対象リポジトリ> で私が担当した作業をアピール素材にしたいです。tasks のような整理資料はないので、git 履歴（コミット/PR）から私の担当範囲・変更内容・判断を拾って整理してください。必要なら career-portfolio/sources/<会社>/ にメモを起こしてから、appeals/<会社>/ に下書きを作ってください。
+
+- 対象ブランチ/PR: <例: feature/xxx、#123>
+- 在籍企業/プロジェクト: <…>
+- （以下、用途・応募職種・定量・伏せたい固有名 等は上と同じ）
 ```
 
 ## 最低限ルート（メモが無くても始められる）
 
-方針（A）と資料（①）だけメンションして「**ここからアピールできる経験を抽出して下書きを作って**」でも着手可能。AIが事実を拾って下書き化し、埋めるべき数値・確認したい点を明示する。
+方針（A）と何らかの入力（①）だけ渡して「**ここからアピールできる経験を抽出して下書きを作って**」でも着手可能。AIが事実を拾って下書き化し、埋めるべき数値・確認したい点を明示する。
 
 ## 完成までの流れ
 
-1. AIが `career-portfolio/appeals/` に下書きを作る（数値・固有名はプレースホルダー）。
+1. AIが `appeals/<会社>/` に下書きを作る（数値・固有名はプレースホルダー、進行中なら実名のまま）。
 2. **実データ**（達成率・グレード・テスト件数などの before→after、固有名の伏せ方）を埋める。
-3. `add`/`commit`/`push` は本人の指示後に実行（push 前に確認）。
+3. レジュメ転記時に、応募先に合わせて**アピールポイントを2〜3点に選定**し、**レジュメ完成版形式へ整形・固有名を抽象化**する（`templates/selection-request-template.md` / `templates/resume-template.md`）。
+4. `add`/`commit`/`push` は本人の指示後に実行（push 前に確認）。
