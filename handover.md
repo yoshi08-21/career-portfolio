@@ -1,121 +1,117 @@
 # 引き継ぎ資料（career-portfolio セッション）
 
-> 最終更新: 2026-06-22
-> 次セッションは **`~/Applications/development/`（横断ルート）で開く**。このファイルを `@career-portfolio/handover.md` でメンションすれば現状を把握できる。
-> 併せて読む: `@career-portfolio/CLAUDE.md`（方針）→ `@career-portfolio/README.md`（構成）→ `@career-portfolio/START-HERE.md`（開始ルール）。
+> 最終更新: 2026-06-28
+> セッションは **`~/Applications/development/`（横断ルート）で開く**。このファイルを `@career-portfolio/handover.md` でメンションすれば現状を把握できる。
+> 併せて読む: `@career-portfolio/CLAUDE.md`（方針）→ `@career-portfolio/ideas.md`（強化アイデア／ロードマップ）→ `@career-portfolio/README.md`（構成）。
 
 ---
 
-## 0. ✅ 直近の確定状況（コミット済み・同期済み）
+## 0. 現在の状態（コミット・同期）
 
-前セッションで working tree に残っていた **ディレクトリ移動・再配置・ドキュメント一般化の差分は確定済み**。新セッション開始時に追加対応は不要。
-
-- **現在の HEAD（push 済み・リモート同期）**: `cd74b8a career-portfolio を横断ルートへ移動し、会社単位構成・入力ソース柔軟化に一般化`
-- `git status` = クリーン、`main...origin/main`（ahead/behind なし）で **push 完了済み**。
-- これで確定した内容: 会社単位ディレクトリへの再配置（`appeals/supernova/`・`sources/supernova/`）、ドキュメント一般化（`CLAUDE.md` ほか）、`handover.md` の追加。
-- ⚠️ **git 運用ルール（今後も厳守）**: `git add`/`commit`/`push` は**本人の明示指示があるまで実行しない**。指示で commit した場合も **push 前に必ず確認**。
+- working tree クリーン・`main...origin/main` 同期（push 済み）想定。新セッション開始時に `git status` で確認。
+- 直近の主なコミット:
+  - `slack-mcp-setup` 追加（Slack MCP 接続手順）
+  - `sources: supernova 棚卸し台帳`（B1 試運転）
+  - `tools: B1 自動棚卸しツール`（playbook/テンプレ/共有エージェント）
+  - `ideas: 強化アイデア記録ファイル`
+  - `appeals/sources に会社ディレクトリ追加（xincere/simount/upbond）`
+- ⚠️ **git 運用ルール（厳守）**: `git add`/`commit`/`push` は**本人の明示指示があるまで実行しない**。指示で commit した場合も **push 前に必ず確認**。
 
 ---
 
-## 1. 現在地サマリ
+## 1. このリポジトリは何か（3行）
 
-- **配置**: `career-portfolio` を `…/supernova/supernova-biz/` 配下から **`~/Applications/development/career-portfolio`** へ移動済み（`supernova/` と兄弟）。独立 git リポジトリ・リモート `origin`（`git@github-personal:yoshi08-21/career-portfolio.git`）健全。
-- **セッションを開く場所**: 今後は **`~/Applications/development/`**。ここからなら `@career-portfolio/...` と `@supernova/...` を短い相対パスでメンションできる。
-- **位置づけ**: SUPERNOVA 専用 → **全プロジェクト横断のレジュメ作成ハブ**へ一般化済み。
+業務経験を「経験 → 整理 → アピール → レジュメ転記」へつなぐ個人リポジトリ。複数プロジェクト（在籍企業）を横断するハブで、対象リポジトリをメンションして整理を依頼する。**当事者性と定量を主役**にし、事実は入力から取り数値は創作しない。
+→ 現在、これを **「転職活動全般を支える伴走ツール」へ拡張中**（下記 §2・`ideas.md`）。
+
+---
+
+## 2. このセッションでやったこと（時系列・理由つき）
+
+1. **新プロジェクトを `development/` へ移動した状態を確認**
+   - `development/` 直下に `career-portfolio` と並んで: `supernova` / `duoduo-nextjs` / `naminori` / `simount`(中に logi-go・pms 系) / `upbond`(中に botejyu・wako 系) / `xincere-blog-dir`。
+   - remote org → 会社ディレクトリ対応: `xincere-inc→xincere`（命名は `xincere` に統一）, `simount`, `upbond`, `SupernovaInc→supernova`。
+   - `appeals/<会社>/`・`sources/<会社>/` に `xincere`/`simount`/`upbond` を追加（`.gitkeep`）。
+
+2. **`ideas.md` を新設（強化アイデア／ロードマップ）**
+   - ビジョン: 経験整理ハブ → 転職活動の伴走ツール／**役割の違うサブエージェント同士のディスカッションで精度を上げる**。
+   - サポートしたい9領域（強み発見・面接回答・自己PR・職経/レジュメのブラッシュ・やりたいこと言語化・企業選び/受験判定・躓きサポート 等）を北極星として明記。
+   - Backlog **B1〜B18**（フェーズ／対応ゴール／使うサブエージェント／優先度・状態）。番号は順序でなくインデックス。使い方の流れ（シナリオ例）も記載。
+   - サブエージェント役割カタログ8種＋討議パターン3種。
+
+3. **`tools/` の土台を確立**（全ツール共通）
+   - 方針: **メンション駆動の自己完結 Markdown プレイブック**（`.claude/` 非依存。横断ルートで開く運用に合わせる）。
+   - 構成ルール: **1ツール=1ディレクトリ**、命名 `b<NN>-<slug>`（`ideas.md` の B番号と一致）。**定義（tools/）とデータ（appeals/・sources/）を分離**。共有部品は `tools/shared/`。
+
+4. **B1「git履歴/PR からの自動棚卸し」を実装＋実リポジトリで試運転**（`tools/b1-auto-inventory/`）
+   - Stage 1（sweep）: `gh pr list --author=@me` で PR を機能単位に抽出 → 暫定スコア → 台帳 `sources/<会社>/_inventory.md`。Stage 2（深掘り）: PR/差分から自動ドラフト → インタビュアー役が質問生成・検証役が裏付けチェック → `sources/<会社>/<テーマ>.md`。
+   - 原則: **git は読むだけ・無い数値はプレースホルダー・B1 は sources まで（appeal は作らない）**。
+   - 試運転: `supernova` の `stella-ai-biz-backend` / `stella-tmp-organization-admin`、直近3ヶ月で **8タスク候補**を抽出し台帳化（`sources/supernova/_inventory.md`）。学び（リポジトリ列・機能テーマでの束ね）を playbook/テンプレへ反映済み。
+   - 共有エージェント: `tools/shared/agents/interviewer.md`・`verifier.md`。
+
+5. **Slack 連携の準備（B1 強化）**: `slack-supernova` MCP を接続
+   - 棚卸しに Slack の議論・判断の流れを取り込むため。この環境に Slack/Linear の MCP は元々無く、調査の上 `korotovsky/slack-mcp-server` をブラウザトークン方式で接続。
+   - **読み取り専用で運用**（`SLACK_MCP_ADD_MESSAGE_TOOL` は付けない＝投稿ツール自体がロードされない。`=false` も付けない＝仕様外で誤登録の恐れ）。手順は `tools/shared/slack-mcp-setup.md`。
+   - **ワークスペースは会社ごとに別**。`xoxc` は team 単位のため **1サーバ=1ワークスペース**。SUPERNOVA 用に `slack-supernova` を登録済み。別ワークスペースは `slack-<名前>` で追加する。
+   - 会社ポリシー上 Slack 連携の禁止は無いことを本人が確認済み。
+
+---
+
+## 3. 現在の構成（ファイル地図）
 
 ```text
-~/Applications/development/            ← 横断ルート（ここで開く）
-├── career-portfolio/                  ← このリポジトリ
+~/Applications/development/                 ← 横断ルート（ここで開く）
+├── career-portfolio/                       ← このリポジトリ
 │   ├── CLAUDE.md / README.md / START-HERE.md / handover.md
-│   ├── templates/  (appeal / resume / request / selection-request)
-│   ├── appeals/<会社>/   ← supernova/ に既存3件
-│   └── sources/<会社>/   ← supernova/（.gitkeep）
-├── supernova/ …                       ← 対象プロジェクト（兄弟）
-└── <これから移動してくる別プロジェクト>/
+│   ├── ideas.md                            ← 強化アイデア（ロードマップ）
+│   ├── templates/  (appeal/resume/request/selection-request)
+│   ├── tools/                              ← ツール定義（定義のみ・データは置かない）
+│   │   ├── README.md                       ← ツール一覧・命名規約・呼び出し方
+│   │   ├── shared/
+│   │   │   ├── agents/ (interviewer.md, verifier.md)
+│   │   │   └── slack-mcp-setup.md          ← Slack MCP 接続手順
+│   │   └── b1-auto-inventory/ (README.md, playbook.md, templates/)
+│   ├── appeals/<会社>/  (supernova に既存3件 / xincere・simount・upbond は空)
+│   └── sources/<会社>/  (supernova/_inventory.md=B1台帳 / 各社 .gitkeep)
+├── supernova/ · duoduo-nextjs/ · naminori/ · simount/ · upbond/ · xincere-blog-dir/
 ```
 
 ---
 
-## 2. このリポジトリは何か（設計思想・3行）
+## 4. これからやること
 
-業務経験を「**経験 → 整理 → アピール → レジュメ転記**」へつなぐ個人リポジトリ。対象プロジェクトをメンションして整理を依頼する横断ハブ。**当事者性（言われた外側で気づき・判断したこと）と具体性（定量）を主役**にし、事実は入力から取り数値は創作しない。
+### A. 最優先: 新セッションで Slack ツールをロード → 疎通 → B1 へ組み込み
+1. **このセッションには Slack ツールが未ロード**（MCP 登録前から続くセッションのため）。**新セッションを開き直す**とロードされる。
+2. 新セッションで `slack-supernova` のツールが見えるか確認 → **読み取り疎通テスト**（例: 参加中チャンネル一覧 / `STELLA-7279` 等のチケットIDでスレッド検索）。投稿ツールが出ていないこと（=読み取り専用）も確認。
+3. **B1 Stage 2 に「コンテキスト補強」ステップを実装**: PR タイトルの `STELLA-XXXX`・PR URL をキーに Slack を検索 → 判断・議論の**要点だけ**を `sources/` に反映（**生ログは保存しない・機密配慮**）。Linear は少量のため手動貼り付けで対応。
 
----
+> 新セッションへの最初の一言（推奨）:
+> 「`@career-portfolio/handover.md` と `@career-portfolio/tools/shared/slack-mcp-setup.md` を見て。slack-supernova MCP 接続済み。B1（`tools/b1-auto-inventory/`）に Slack 連携を組み込む続き。」
 
-## 3. このセッションでやったこと（時系列・理由つき）
+### B. B1 を end-to-end で完成
+- Stage 2（深掘り）を実リポジトリで1本通す。候補は台帳 `sources/supernova/_inventory.md` の ◎ や「機能テーマでの束ね」（例: メンバーオーダー更新機能 / service_start_date 導入）。
+- 出力 `sources/supernova/<テーマ>.md` を素材として既存 appeal 流れ（B6 等）へ渡す。
 
-1. **delete-order-batch のプロジェクト経験を作成**（`appeals/supernova/2026-06-delete-order-batch.md`）
-   - メンバー削除オーダーのバッチ自動削除（インシデント再発防止）。**進行中・仕様レビュー中だが仮仕様で先行実装済み**のタスク。
-   - 記録方針は本人と相談し、**「仕様作成＋仮仕様での先行実装まで含めてアピール」**（承認後すぐPRに移れる状態を作った段取り判断を武器にする）を採用。
-
-2. **固有名の「具体↔抽象」ライフサイクルをルール化**（`CLAUDE.md`）
-   - 理由: 進行中タスクは追記のたびに事実照合が要るため**実名で書き、完了・レジュメ化時にまとめて抽象化**（最後の1パス）。実名ファイルは冒頭注記＋末尾の用語対応表を持つ。
-
-3. **レジュメ完成版フォーマットを登録**（`templates/resume-template.md`）
-   - 本人提供の実例に合わせ、**`課題/解決策/成果/関与度/使用技術` × 詳細版/圧縮版**を標準化。delete-order-batch にこの形式の「レジュメ完成版」を追記済み。
-
-4. **アピールポイント取捨選択サポートを整備**（紙面の都合で1プロジェクト2〜3点に絞る支援）
-   - **5軸ルーブリック**（当事者性・定量インパクト・技術難度・再現性・職種タグ）を `CLAUDE.md` に定義。
-   - 各 appeal に **「アピールポイント候補（5軸評価）」表**を持たせる（`appeal-template.md` に反映、delete-order-batch に実例7点）。
-   - **応募先ドリブンの選択**を回す `templates/selection-request-template.md` を新設（ハイブリッド方式＝土台は共通・最終選択だけ応募先で出し分け）。
-
-5. **career-portfolio を横断ハブへ移行**（本セッション後半・上記「現在地」）
-   - development/ へ移動、**会社単位ディレクトリ**（`appeals/<会社>/`・`sources/<会社>/`）へ再配置、ドキュメントを SUPERNOVA 非依存に一般化。
-   - **入力ソースを柔軟化**（`CLAUDE.md`「入力ソースの取り方（柔軟）」）。理由: tasks 資料は SUPERNOVA 固有の運用で、別プロジェクトには無い。基本＝ファイルメンション、無ければ **git 履歴から棚卸し／本人メモ／将来 Slack／その場でメモ作成**。
+### C. 次のツール（`ideas.md` Backlog から）
+- 候補: **B4 強み発掘インタビュー**（サブエージェント討議の核）/ **B15 模擬面接** など。各ツールは §4 の土台ルールに従い `tools/b<NN>-<slug>/` に作る。
 
 ---
 
-## 4. 確立したルール・仕組み（新セッションが従う要点）
+## 5. 確立したルール（新セッションが従う要点）
 
-- **2つの出力形式**: ①進行中ドラフト（`appeal-template.md`）→ ②完了・転記時にレジュメ完成版（`resume-template.md`）へ変換＋抽象化。
-- **固有名**: 進行中は実名／完了・レジュメ化で抽象化（一般技術名 Go/Slack 等は抽象化しない）。
-- **取捨選択**: 候補を5軸でストック → 応募先で上位2〜3点を理由付き選定（`selection-request-template.md`）。
-- **入力**: 基本ファイルメンション、無ければ git 履歴等で柔軟に素材化。事実の裏付けは入力から、無い数値はプレースホルダー。
-- **保存先**: `appeals/<会社>/<YYYY-MM-テーマ>.md`。
-- **CLAUDE.md は自動ロードされない**（career-portfolio 外で作業するため）。毎回 `@career-portfolio/CLAUDE.md` を明示メンション。
-
----
-
-## 5. これからやること
-
-### A. 未コミット差分の確定 ✅ 完了
-§0 の通り、`cd74b8a` でコミット・push 済み（2026-06-22 確認）。対応不要。
-
-### B. 別プロジェクトを `development/` へ移動（本人の次タスク・最優先）
-career-portfolio の移動と同じ要領で安全に行う。career-portfolio 側は**変更不要**（別プロジェクトが兄弟に並べば、そのままメンションして整理を依頼できる）。
-
-移動手順の指針（career-portfolio 移動時に実証済み）:
-1. 事前チェック: 対象が git リポジトリか・`git status` がクリーンか・リモート同期済みか／移動先 `~/Applications/development/<name>` が空か。
-2. 移動元の**外**にいる状態で `mv <現パス> ~/Applications/development/<name>`。
-3. 移動後: `git rev-parse --show-toplevel` / `git remote -v` / `git status -sb` で健全性確認。
-4. 親が git 管理外（submodule でない）なら影響なし。submodule の場合は別途配慮。
-
-> 移動が済んだら、そのプロジェクトのレジュメ経験は `START-HERE.md` のキックオフ（資料が無ければ「git 履歴から棚卸し版」）で着手できる。保存先は `appeals/<その会社>/`。
-
-### C. 既存ドラフトの仕上げ（随時）
-- `appeals/supernova/` の3件はいずれも**下書き（数値・固有名にプレースホルダー）**。実データを埋めて完成へ。
-- **delete-order-batch はリリース後**に、成果の定量（再発防止の実証・運用工数削減・承認→PRのリードタイム）と候補表 #1/#4 の「暫定」スコアを更新。
+- **ツールはメンション駆動のプレイブック**（`tools/<tool>/playbook.md` を `@` で呼ぶ）。`.claude/` に依存しない。
+- **1ツール=1ディレクトリ**、命名 `b<NN>-<slug>`。**定義（tools/）とデータ（appeals/・sources/）を分離**。共有は `tools/shared/`。
+- **サブエージェント討議で精度を上げる**（役割: interviewer/verifier/critic/採用担当/コーチ/企業分析/編集/ジャッジ。実現は Agent・Workflow）。
+- **固有名**: 進行中は実名／レジュメ化時に一括抽象化（一般技術名 Go/Slack 等は抽象化しない）。
+- **保存先**: appeal=`appeals/<会社>/<YYYY-MM-テーマ>.md`、素材=`sources/<会社>/`。会社=remote org 基準（xincere/simount/upbond/supernova）。
+- **Slack は読み取り専用**・ワークスペースごとに `slack-<名前>` で別登録。
+- **CLAUDE.md は自動ロードされない**（横断ルートで作業するため毎回 `@career-portfolio/CLAUDE.md` を明示）。
 
 ---
 
-## 6. ファイル地図
+## 6. 注意点
 
-| ファイル | 役割 |
-|---|---|
-| `CLAUDE.md` | AI 方針・入力チェックリスト・出力フォーマット(A/B)・固有名ライフサイクル・取捨選択ルーブリック(5軸) |
-| `README.md` | 目的・配置・構成・運用フロー |
-| `START-HERE.md` | セッション開始ルール（横断ルートで開く・キックオフ文2種） |
-| `handover.md` | この引き継ぎ資料 |
-| `templates/appeal-template.md` | 進行中ドラフト用（候補表セクション込み） |
-| `templates/resume-template.md` | レジュメ完成版（課題/解決策/成果/関与度/使用技術 × 詳細/圧縮） |
-| `templates/selection-request-template.md` | 応募先に合わせた2〜3点の選択依頼フォーム |
-| `templates/request-template.md` | 整理依頼フォーム |
-| `appeals/supernova/2026-06-*.md` | 既存3件（ai-goal-management / order-csv-refactor / delete-order-batch） |
-
----
-
-## 7. 注意点
-
-- **git 操作は本人指示後のみ・push 前に確認**（このリポジトリ＝個人 private、横断で各社の固有名を含むため特に慎重に）。
-- **会社をまたぐ抽象化**: 各社の社名・パートナー名・人物名・社内固有名はレジュメ転記時に抽象化（用語対応表を使う）。
-- **セッションは `~/Applications/development/` で開く**（supernova-biz 配下からは `@career-portfolio/...` が届かない）。
+- **git 操作は本人指示後のみ・push 前に確認**（個人 private・各社固有名を含むため特に慎重に）。
+- **Slack トークンは失効しうる**（`d` Cookie のセッション切れ）。読めなくなったら再取得→`claude mcp` 再登録（手順は `slack-mcp-setup.md`）。
+- **Slack 取り込み時の機密配慮**: 生スレッド・他者名をそのまま `sources/` に書かない。自分の判断・当事者性の要点のみ抽出。
+- 既存ドラフト `appeals/supernova/` の3件は下書き（数値・固有名にプレースホルダー）。実データで仕上げる。
